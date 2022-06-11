@@ -81,7 +81,6 @@
 
     #experiences p, #projects p{
         margin: 0;
-        margin-bottom: 1em;
     }
 
     .button{
@@ -126,6 +125,16 @@
     }
     .li-headings li p{
         font-weight: normal;
+        margin-bottom: 0;
+    }
+
+    .project{
+        margin-bottom: 1em;
+    }
+
+    .li-headings li .source{
+        font-weight: normal;
+        margin: 0;
     }
 
     #computer-skills{
