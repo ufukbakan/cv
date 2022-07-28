@@ -85,6 +85,9 @@
     #experiences p, #projects p{
         margin: 0;
     }
+    #experiences p{
+        margin-bottom: 2ch;
+    }
 
     .button{
         padding: .2em 1.5em;
@@ -141,7 +144,8 @@
     }
 
     .education-list li{
-        display: inline;
+        display: inline-table;
+        margin-bottom: 2ch;
     }
 
     .graduation-points{
