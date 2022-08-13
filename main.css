@@ -175,12 +175,16 @@
 
     .computer-skill::before{
         content: '•';
-        margin-right: 1ch;
+        margin-right: .5ch;
+        margin-left: .5ch;
     }
 
     .computer-skill{
         display: inline;
         word-break: break-word;
+        white-space: nowrap;
+    }
+    .computer-skill:nth-last-child(2), .computer-skill:last-child{
         white-space: normal;
     }
 }
