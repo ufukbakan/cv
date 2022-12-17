@@ -82,11 +82,9 @@
         grid-template-rows: auto;
     }
 
-    #experiences p, #projects p{
+    .no-margin-p p{
         margin: 0;
-    }
-    #experiences p{
-        margin-bottom: 2ch;
+        margin-bottom: 3ch;
     }
 
     .button{
@@ -128,6 +126,7 @@
 
     .li-headings li{
         font-weight: bold;
+        margin-bottom: 1ch;
     }
     .li-headings li p{
         font-weight: normal;
@@ -135,7 +134,7 @@
     }
 
     .project{
-        margin-bottom: 1em;
+        margin-bottom: 3ch;
     }
 
     .li-headings li .source{
