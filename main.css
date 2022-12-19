@@ -1,4 +1,7 @@
 @media screen,print{
+    .hide{
+        display: none;
+    }
     body{
         margin: 0;
         padding: 0;
@@ -94,6 +97,10 @@
         border-radius: .3em;
         cursor: pointer;
         transition: background .1s linear, color .1s linear;
+        text-align: center;
+        font-weight: bold;
+        user-select: none;
+        cursor: pointer;
     }
 
     .button span{
@@ -191,20 +198,20 @@
 @media screen{
     #print-button{
         display: block;
-        position: fixed;
-        font-weight: bold;
-        right: 1em;
-        top: 10px;
-        user-select: none;
-        cursor: pointer;
     }
-    #dont-print, #dont-print *{
+    #dont-print {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        width: 200px;
+        left: 50%;
+        transform: translate(-50%);
         z-index: 2;
     }
     #back-button{
-        display: block;
         display: none;
-        position: fixed;
         left: 50%;
         transform: translateX(calc(-120mm - 100%));
         top: 10px;
@@ -290,10 +297,6 @@
 }
 
 @media screen and (max-width: calc(210mm + 81px)){
-    #print-button{
-        left: 50%;
-        transform: translateX(-50%);
-    }
     .half-grid{
         display: grid;
         grid-template-columns: auto;

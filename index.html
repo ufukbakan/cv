@@ -10,8 +10,14 @@
 </head>
 
 <body>
+    <script>
+        function togglePortrait(){
+            document.body.getElementsByClassName("portrait")[0].classList.toggle("hide");
+        }
+    </script>
     <div id="dont-print">
         <div id="back-button" class="button secondary-button" onclick="window.history.back()">Back</div>
+        <div class="button secondary-button" onclick="togglePortrait()">Toggle portrait</div>
         <div id="print-button" onclick="{window.print(); return true;}" class="button primary-button">
             <svg class="icon" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512"
                 xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +54,7 @@
                 </ul>
             </div>
             <div class="auto-divided-grid">
-                <div class="portrait">
+                <div class="portrait hide">
                     <img src="pp.png">
                 </div>
                 <h3>Personal Information</h3>
@@ -164,16 +170,18 @@
             <p>I got Linux, PostgreSQL, Docker, Java, Spring Boot, JPA, Hibernate, Persistance, Clean Code, Javascript
                 and React.js courses and developed a Spring Boot Web project alongside react + vite.js web interface.
             </p>
-            <li>Part-time Software Developer at TÜBİTAK BİLGEM YTE (August 20201- August 2022)</li>
-            <p>I worked as a full stack software developer. Spring framework is mostly used at job. Using continious
-                integration tools like Jira was a daily routine. I developed both backend with Java and PostgreSQL and
-                frontend with ember and handlebars, for government's financial system. </p>
+            <li>Remote Software Developer at TÜBİTAK BİLGEM YTE (August 20201- August 2022)</li>
+            <p>I worked as a full stack software developer. SpringBoot framework is primarly used in this job. I gained
+                experience with working within an agile environment. Using continious integration tools like Jira was a
+                daily routine. I developed both backend with Java and PostgreSQL and frontend with ember and handlebars,
+                for government's financial system. </p>
             <li>BİLGEM YTE & Patika Bootcamp</li>
             <p>I completed a java bootcamp which is organized by TÜBİTAK BİLGEM and Patika. Bootcamp took 8 weeks. Main
                 subject was backend and desktop development.
                 Weekly tasks are published publicly on github at the end of every week.</p>
-            <li>Junior Big Data Engineer at T.C. İçişleri Bakanlığı</li>
-            <p>I'm currently working on a distributed big data system with HDFS file system and developing APIs via
+            <li>On-site Software Engineer at T.C. İçişleri Bakanlığı</li>
+            <p>I'm currently working on a distributed big data environment with HDFS file system and developing web APIs
+                via
                 Trino drivers.</p>
         </ul>
         <h3>Certificates</h3>
