@@ -363,4 +363,11 @@
     .project{
         page-break-inside: avoid;
     }
+
+    li{
+        page-break-inside: avoid;
+    }
+    .breakable{
+        page-break-inside: initial;
+    }
 }
