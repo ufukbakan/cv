@@ -34,6 +34,12 @@
     ol,ul{
         margin-top: 0;
     }
+    li > h4{
+        margin-bottom: 0;
+    }
+    li > ol, li > ul{
+        margin-top: 1em;
+    }
 
     #name{
         margin-bottom: 0;
@@ -138,7 +144,7 @@
 
     .li-headings li{
         font-weight: bold;
-        margin-bottom: 1ch;
+        margin-bottom: 2em;
     }
     .li-headings li p{
         font-weight: normal;
@@ -178,6 +184,9 @@
     ol li::before{
         content: counters(item, ".") ". ";
         counter-increment: item
+    }
+    ol li h4{
+        display: inline;
     }
     ol{
         list-style-type: none;
