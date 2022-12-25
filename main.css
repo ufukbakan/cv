@@ -162,11 +162,13 @@
 
     .education-list li{
         display: inline-table;
+        width: 240px;
         margin-bottom: 2ch;
     }
 
     .graduation-points{
-        display: inline;
+        display: inline-block;
+        vertical-align: top;
         margin-left: 1em;
     }
 
