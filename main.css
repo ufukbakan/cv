@@ -241,14 +241,6 @@ print {
         justify-content: space-between;
     }
 
-    .star {
-        display: inline-block;
-        background-image: url("/assets/star.svg");
-        width: 1em;
-        height: 1em;
-        background-size: contain;
-    }
-
     .fa-star.filled {
         color: rgb(255, 157, 11);
         /* filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(20deg) brightness(118%) contrast(119%); */
@@ -285,7 +277,7 @@ print {
     }
     #dont-print::after{
         content: "";
-        background-image: url("/assets/down-arrow.svg");
+        background-image: url("./assets/down-arrow.svg");
         background-color: #bbb;
         background-size: contain;
         background-position: bottom;
