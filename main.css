@@ -7,7 +7,7 @@ print {
     #personal-title{
         font-size: 1rem;
         font-weight: normal;
-        margin: 0;
+        margin: 0 0 1rem 0;
     }
 
     body {
@@ -214,9 +214,9 @@ print {
     }
 
     .computer-skill::before {
-        content: '•';
+        /* content: '•';
         margin-right: .5ch;
-        margin-left: .5ch;
+        margin-left: .5ch; */
     }
 
     .computer-skill {
@@ -238,7 +238,7 @@ print {
         display: flex;
         flex-flow: row wrap;
         gap: 1rem 2.5rem;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     .star {
@@ -255,6 +255,13 @@ print {
     }
     .fa-star{
         color: rgb(221, 221, 221);
+    }
+
+    .mb-2{
+        margin-bottom: 1rem;
+    }
+    .mb-4{
+        margin-bottom: 2rem;
     }
 }
 
@@ -472,5 +479,9 @@ print {
     }
     .fa-star{
         color: rgb(148, 148, 148);
+    }
+
+    #computer-skills{
+        page-break-after: always;
     }
 }
