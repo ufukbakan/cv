@@ -1,0 +1,130 @@
+@use '../base' as *
+    
+// ============ FOOTER ============
+
+@keyframes pulse
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+@mixin delayed-pulse
+    animation: pulse 5s ease-in-out infinite alternate
+    animation-delay: attr(data-delay ms)
+
+.site-footer
+  border-top: 1px solid $color-border-dark
+  background-color: $color-card-dark
+  padding: $spacing-xxl 0
+  .footer-grid
+    @extend %flex-row
+    flex-wrap: wrap
+    @include respond-to("lg")
+      flex-wrap: nowrap
+    justify-content: space-between
+    .footer-cta
+      min-width: 10rem
+      h2
+        font-size: 1.875rem
+        font-weight: 700
+        margin-bottom: 1rem
+      p
+        color: $color-text-muted
+        margin-bottom: 2rem
+  .social-links
+    @extend %flex-row
+    gap: 1rem
+    .social-btn
+      width: 48px
+      height: 48px
+      border-radius: $radius-full
+      border: 1px solid $color-border-dark
+      @extend %flex-center
+      color: $color-text-muted
+      @extend %transition-smooth
+      &:hover
+        border-color: $color-primary
+        color: $color-primary
+      svg
+        width: 24px
+        height: 24px
+        fill: currentColor
+  .footer-github
+    flex-grow: 1
+    max-width: 100%
+    @include respond-to("lg")
+      max-width: 50%
+  .github-stats-label
+    font-size: 0.875rem
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    color: $color-text-dim
+    margin-bottom: 1.5rem
+  .github-card
+    background-color: $color-bg-dark
+    border: 1px solid $color-border-dark
+    border-radius: $radius-xl
+    padding: 1.5rem
+    padding-bottom: 2.5rem
+    overflow-x: auto
+    position: relative
+    .contribution-grid
+      @extend %flex-col
+      flex-wrap: wrap
+      max-height: calc(10*7px + 6*$spacing-xs)
+      gap: $spacing-xs
+    .contribution-box
+      width: 10px
+      height: 10px
+      border-radius: 2px
+      background-color: $color-surface-dark
+      &.p1
+        background-color: $contribution-p1
+      &.p2
+        background-color: $contribution-p2
+      &.p3
+        background-color: $contribution-p3
+      &.p4
+        background-color: $contribution-p4
+      &.p5
+        background-color: $contribution-p5
+      &.loading
+        // delay by data attribute index:
+        @include delayed-pulse
+    .contribution-legend
+      position: sticky
+      left: 50%
+      transform: translateX(-50%)
+      margin-top: 1rem
+      max-width: 200px
+      @extend %flex-row
+      justify-content: space-between
+      font-size: 10px
+      text-transform: uppercase
+      color: $color-text-dim
+      .legend-boxes
+        @extend %flex-row
+        gap: $spacing-xs
+  .footer-bottom
+    margin-top: 4rem
+    padding-top: 2rem
+    border-top: 1px solid $color-border-dark
+    @extend %flex-col
+    gap: 1rem
+    align-items: center
+    @include respond-to("md")
+      flex-direction: row
+      justify-content: space-between
+    .copyright
+      font-size: 0.875rem
+      color: $color-text-dim
+    .legal-links
+      @extend %flex-row
+      gap: 1.5rem
+      .legal-link
+        font-size: 0.75rem
+        font-weight: 500
+        color: $color-text-dim
+        &:hover
+          color: $color-primary

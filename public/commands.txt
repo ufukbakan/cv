@@ -1,0 +1,93 @@
+cd ./app
+fnm use
+git checkout -b feature
+git reset --hard origin/master
+code .
+bun remove react react-dom
+bun add jjsx
+docker compose up -d
+bun dev
+docker logs -f
+curl http://localhost:3000/api/health
+bun run db:migrate
+bun run db:seed
+bun test
+bun test --coverage
+bun run type-check
+docker compose exec db psql -U postgres -c "SELECT * FROM users"
+bun build --minify
+docker buildx build --platform linux/amd64,linux/arm64 -t app:latest .
+docker run -p 3000:3000 app:latest
+bun lint --fix
+prettier --write .
+git diff
+git add .
+git commit -m "refactor: replace react with jjsx"
+git push origin feature
+gh pr create --title "Refactor: Replace React with jjsx" --body "This PR modernizes the frontend framework"
+npm pack
+bun run deploy:staging
+bun run e2e:test
+git checkout main
+git rebase origin/main
+git push origin main
+git merge feature
+
+cd ../backend-service
+fnm use
+git checkout -b feature/redis-cache
+git reset --hard origin/develop
+code .
+bun add redis ioredis
+docker compose up -d redis postgres
+bun dev
+docker compose exec postgres psql -U postgres -d mydb -c "CREATE INDEX idx_users_email ON users(email)"
+bun test --run
+bun build
+docker buildx build -t backend-service:latest .
+docker run -p 8080:8080 backend-service:latest
+bun lint --fix
+git add .
+git commit -m "feat: implement redis caching layer"
+git push origin feature/redis-cache
+gh pr create --title "Feature: Add Redis caching" --body "Improves query performance by 60%"
+bun run e2e:test
+
+cd ../api-gateway
+git checkout -b feature/auth-middleware
+git reset --hard origin/main
+code .
+./gradlew clean build
+docker compose up -d
+./gradlew bootRun
+curl http://localhost:8081/health
+mvn test
+mvn test jacoco:report
+docker build -t api-gateway:latest .
+docker run -p 8081:8081 api-gateway:latest
+git add .
+git commit -m "refactor: implement JWT auth middleware"
+git push origin feature/auth-middleware
+gh pr create --title "Refactor: JWT Authentication" --body "Secure API endpoints with token validation"
+cd ../web-dashboard
+fnm use
+git checkout -b feature/dark-mode
+git reset --hard origin/master
+code .
+bun add next tailwindcss
+bun install
+bun dev
+curl http://localhost:3000/api/config
+bun test
+bun test --coverage
+bun run type-check
+bun lint --fix
+prettier --write .
+bun build
+bun start
+bun run export
+git add .
+git commit -m "feat: implement dark mode theme switcher"
+git push origin feature/dark-mode
+gh pr create --title "Feature: Dark Mode Support" --body "Complete theme system with persistence"
+bun run e2e:test

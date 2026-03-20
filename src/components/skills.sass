@@ -1,0 +1,68 @@
+@use "../base" as *
+
+%chip
+  background-color: $color-surface-dark
+  border: 1px solid $color-primary
+  border-radius: $radius-full
+  padding: $spacing-xs $spacing-lg
+  color: $color-text-muted
+  font-size: 0.875rem
+  font-weight: 500
+  text-align: center
+  flex-shrink: 0
+  @extend %transition-smooth
+  cursor: pointer
+  &:hover
+    background-color: $color-primary
+    color: $color-text-main
+
+#skills
+  @extend %flex-col
+  @extend %flex-center
+  gap: $spacing-lg
+  background-color: $color-bg-dark-alt
+  overflow: hidden
+  width: 100%
+  max-width: 100%
+
+  input[type=search]
+    background-color: $color-surface-dark
+    border: 1px solid $color-border-dark
+    border-radius: $radius-lg
+    padding: $spacing-s $spacing-lg
+    color: $color-text-main
+    font-size: 0.875rem
+    width: 100%
+    max-width: 300px
+    outline: none
+    @extend %transition-smooth
+    &:focus
+      border-color: $color-primary
+      box-shadow: 0 0 0 2px $color-primary-muted
+    &::placeholder
+      color: $color-text-muted
+
+.skills-grid
+  display: flex
+  flex-wrap: nowrap
+  min-height: 2rem
+  gap: 1rem
+  transform: translateX(0)
+  transition: transform 60s linear
+  will-change: transform
+  li
+    @extend %chip
+
+#skills.animate
+  .skills-grid
+    transform: translateX(-50%)
+
+  .skills-grid:nth-of-type(even)
+    transform: translateX(50%)
+
+#skills.paused
+  .skills-grid
+    transition: transform 3s linear !important
+    transform: translateX(0) !important
+    li
+      color: $color-text-main

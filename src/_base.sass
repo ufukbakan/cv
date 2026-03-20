@@ -1,0 +1,173 @@
+// Base styles and CSS custom properties
+// This file contains the foundational styles that set up the design system
+
+// Colors
+$color-primary: #135bec
+$color-primary-muted: rgba(19, 91, 236, 0.1)
+$color-primary-shadow: rgba(19, 91, 236, 0.2)
+$color-bg-dark: #101622
+$color-bg-dark-alt: rgba(16, 22, 34, 0.5)
+$color-surface-dark: #1e293b
+$color-card-dark: #0f172a
+$color-border-dark: #2d3748
+$color-text-main: #f1f5f9
+$color-text-muted: #94a3b8
+$color-text-dim: #64748b
+$color-white: #ffffff
+$color-black: #000000
+
+// Spacing
+$spacing-xs: 0.25rem
+$spacing-s: 0.5rem
+$spacing-md: 0.75rem
+$spacing-lg: 1rem
+$spacing-xl: 1.5rem
+$spacing-xxl: 2rem
+
+// Border radius
+$radius-md: 0.5rem
+$radius-lg: 0.75rem
+$radius-xl: 1rem
+$radius-2xl: 1.5rem
+$radius-3xl: 2rem
+$radius-full: 9999px
+
+// Breakpoints
+$breakpoint-sm: 640px
+$breakpoint-md: 870px
+$breakpoint-lg: 1024px
+
+// Icon colors
+$icon-blue-color: #3b82f6
+$icon-blue-bg: rgba(59, 130, 246, 0.1)
+$icon-green-color: #22c55e
+$icon-green-bg: rgba(34, 197, 94, 0.1)
+$icon-purple-color: #a855f7
+$icon-purple-bg: rgba(168, 85, 247, 0.1)
+$icon-amber-color: #f59e0b
+$icon-amber-bg: rgba(245, 158, 11, 0.1)
+
+// Contribution levels
+$contribution-p1: rgba(19, 91, 236, 0.4)
+$contribution-p2: rgba(19, 91, 236, 0.6)
+$contribution-p3: rgba(19, 91, 236, 0.8)
+$contribution-p4: rgba(19, 91, 236, 0.9)
+$contribution-p5: #135bec
+
+$max-width: min(1280px, 95vw)
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+// HTML base styles
+html
+  scroll-behavior: smooth
+
+// Body base styles
+body
+  font-family: "Inter", sans-serif
+  background-color: $color-bg-dark
+  color: $color-text-main
+  line-height: 1.5
+  -webkit-font-smoothing: antialiased
+  overflow-x: hidden
+
+
+
+%flex-center
+  display: flex
+  align-items: center
+  justify-content: center
+
+%flex-row
+  display: flex
+  align-items: center
+
+%flex-col
+  display: flex
+  flex-direction: column
+
+%transition-smooth
+  transition: all 0.2s ease
+
+%card-base
+  background-color: $color-card-dark
+  border: 1px solid $color-border-dark
+  border-radius: $radius-2xl
+
+%button-base
+  border: none
+  cursor: pointer
+  font-weight: 700
+  border-radius: $radius-lg
+  padding: $spacing-s $spacing-xxl
+  @extend %transition-smooth
+
+%shadow-primary
+  box-shadow: 0 10px 20px $color-primary-shadow
+
+// ============ MIXINS ============
+@mixin respond-to($bp)
+  @if $bp == "sm"
+    @media (min-width: $breakpoint-sm)
+      @content
+  @else if $bp == "md"
+    @media (min-width: $breakpoint-md)
+      @content
+  @else if $bp == "lg"
+    @media (min-width: $breakpoint-lg)
+      @content
+
+@mixin responsive-grid($base: 1, $sm: null, $md: null, $lg: null, $gap: $spacing-lg)
+  display: grid
+  grid-template-columns: repeat($base, 1fr)
+  gap: $gap
+  @each $bp, $cols in ("sm": $sm, "md": $md, "lg": $lg)
+    @if $cols
+      @include respond-to($bp)
+        grid-template-columns: repeat($cols, 1fr)
+
+@mixin button($bg, $text: $color-white, $shadow: false)
+  background-color: $bg
+  color: $text
+  @extend %button-base
+  @if $shadow
+    box-shadow: 0 4px 12px $color-primary-shadow
+  &:hover
+    transform: translateY(-2px)
+    @if $shadow
+      @extend %shadow-primary
+
+@mixin card-hover($border: rgba(19, 91, 236, 0.5))
+  @extend %transition-smooth
+  &:hover
+    border-color: $border
+
+@mixin icon-color($key)
+  @if $key == "blue"
+    background-color: $icon-blue-bg
+    color: $icon-blue-color
+  @else if $key == "green"
+    background-color: $icon-green-bg
+    color: $icon-green-color
+  @else if $key == "purple"
+    background-color: $icon-purple-bg
+    color: $icon-purple-color
+  @else if $key == "amber"
+    background-color: $icon-amber-bg
+    color: $icon-amber-color
+
+@mixin pulse($size: 8px, $color: $color-primary)
+  position: relative
+  width: $size
+  height: $size
+  &::after
+    content: ""
+    position: absolute
+    width: 100%
+    height: 100%
+    background-color: $color
+    border-radius: 50%
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite
